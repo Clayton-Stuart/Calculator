@@ -2,9 +2,8 @@ import math
 
 while True:
 
-	path = input("Type help for options, or type a formula, or calculator: ")
-
-	path = path.lower()
+	PROMPT = "Type help for options, or type a formula, or calculator: "
+	path = input(PROMPT).lower()
 
 	if path == "help":
 		print("""Formula Calculators:
@@ -19,9 +18,7 @@ while True:
 			""")
 
 	while path == "help":
-		path = input("Type help for options, or type a formula, or calculator: ")
-
-		path = path.lower()
+		path = input(PROMPT).lower()
 
 		if path == "help":
 			print("""Formula Calculators:
