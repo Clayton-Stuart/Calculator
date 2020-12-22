@@ -44,6 +44,9 @@ while True:
 			else:
 				x1 = float(x1)
 				break
+		# you don't actually need the second float() conversion,
+		# since the first one in the try branch will have worked
+		# if we're not in the except clause.  example:
 		while True:
 			x2 = input("x2: ")
 			try:
@@ -53,20 +56,18 @@ while True:
 				pass
 
 			else:
-				x2 = float(x2)
 				break
 
+		# in fact, you don't even need the else: branch at all.
+		# you can put everything that you want to happen for a
+		# successful input right into the try: branch. example:
 		while True:
 			y1 = input("y1: ")
 			try:
 				y1 = float(y1)
-
+				break
 			except:
 				pass
-
-			else:
-				y1 = float(y1)
-				break
 
 		while True:
 			y2 = input("y2: ")
