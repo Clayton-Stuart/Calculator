@@ -18,6 +18,17 @@ def path_input():
 	func_path = func_path.lower()
 	return func_path
 
+def get_float(prompt):
+	while True:
+		x = input(prompt)
+		try:
+			x = float(x)
+			break
+		except:
+			pass
+	return x
+
+
 while True:
 
 	path = path_input()
@@ -35,102 +46,24 @@ while True:
 
 	path = path.lower()
 	if path == "dist":
-		while True:
-			x1 = input("x1: ")
-			try:
-				x1 = float(x1)
-			except:
-				pass
-			else:
-				x1 = float(x1)
-				break
-		while True:
-			x2 = input("x2: ")
-			try:
-				x2 = float(x2)
 
-			except:
-				pass
-
-			else:
-				x2 = float(x2)
-				break
-
-		while True:
-			y1 = input("y1: ")
-			try:
-				y1 = float(y1)
-
-			except:
-				pass
-
-			else:
-				y1 = float(y1)
-				break
-
-		while True:
-			y2 = input("y2: ")
-			try:
-				y2 = float(y2)
-
-			except:
-				pass
-
-			else:
-				y2 = float(y2)
-				break
-
+		x1 = get_float("x1: ")
+		x2 = get_float("x2: ")
+		y1 = get_float("y1: ")
+		y2 = get_float("y2: ")
 
 		answer = math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1))
 		print(answer)
+		print("")
 		
 
 	if path == "mid":
 
-		while True:
-			x1 = input("x1: ")
-			try:
-				x1 = float(x1)
-			except:
-				pass
-			else:
-				x1 = float(x1)
-				break
-		while True:
-			x2 = input("x2: ")
-			try:
-				x2 = float(x2)
+		x1 = get_float("x1: ")
+		x2 = get_float("x2: ")
+		y1 = get_float("y1: ")
+		y2 = get_float("y2: ")
 
-			except:
-				pass
-
-			else:
-				x2 = float(x2)
-				break
-
-		while True:
-			y1 = input("y1: ")
-			try:
-				y1 = float(y1)
-
-			except:
-				pass
-
-			else:
-				y1 = float(y1)
-				break
-
-		while True:
-			y2 = input("y2: ")
-			try:
-				y2 = float(y2)
-
-			except:
-				pass
-
-			else:
-				y2 = float(y2)
-				break
 		xp1 = (x1 + x2)
 		xp2 = (xp1/2)
 		yp1 = (y1 + y2)
@@ -140,25 +73,8 @@ while True:
 
 	if path == "pyth":
 
-		while True:
-			s1 = input("s1: ")
-			try:
-				s1 = float(s1)
-			except:
-				pass
-			else:
-				s1 = float(s1)
-				break
-
-		while True:
-			s2 = input("s2: ")
-			try:
-				s2 = float(s2)
-			except:
-				pass
-			else:
-				s2 = float(s2)
-				break
+		s1 = get_float("Side 1: ")
+		s2 = get_float("Side 2: ")
 		s12 = s1*s1
 		s22 = s2*s2
 		s32 = s12 + s22
@@ -180,110 +96,34 @@ while True:
 				shape = shape.lower()
 
 		if shape == "square":
-			while True:
-				side_length = input("Enter the length of a side (no units): ")
-				try:
-					float(side_length)
-				except:
-					pass
-				else:
-					side_length = float(side_length)
-					break
+			side_length = get_float("Enter the length of a side (no units): ")
 
 			print(side_length * side_length)
 
 		if shape == "circle":
-			while True:
-				radius = input("Enter the radius (no units): ")
-				try:
-					float(radius)
-				except:
-					pass
-				else:
-					radius = float(radius)
-					break
+			radius = get_float("Enter the radius (no units): ")
 			radius = radius * radius
 			print(radius * 3.14159265358979323846264338327950288419716939937510582097494459230781640628620899862803482534211706798214808651328230664709384)
 
 		if shape == "triangle":
-			while True:
-				base = input("Enter the length of the base (no units): ")
-				try:
-					float(base)
-				except:
-					pass
-				else:
-					base = float(base)
-					break
+			base = get_float("Enter the length of the base (no units)")
 
-			while True:
-				height = input("Enter the height (no units): ")
-				try:
-					float(height)
-				except:
-					pass
-				else:
-					height = float(height)
-					break
+			height = get_float("Enter the height (no units): ")
 			mid = base * height
 			print(mid/2)
 
 		if shape == "rectangle":
-			while True:
-				length = input("Enter the length (no units): ")
-				try:
-					float(length)
-				except:
-					pass
-				else:
-					length = float(length)
-					break
-
-			while True:
-				width = input("Enter the width (no units): ")
-				try:
-					float(width)
-				except:
-					pass
-				else:
-					width = float(width)
-					break
+			length = get_float("Enter the length (no units): ")
+			width = get_float("Enter the width (no units): ")
 			print(width * length)
 
 		if shape == "parallelogram":
-			while True:
-				pass
-				base = input("Enter the length of the base (no units): ")
-				try:
-					float(base)
-				except:
-					pass
-				else:
-					base = float(base)
-					break
-
-			while True:
-				height = input("Enter the height (no units): ")
-				try:
-					float(height)
-				except:
-					pass
-				else:
-					height = float(height)
-					break
+			base = get_float("Enter the length of the base (no units): ")
+			height = get_float("Enter the height (no units): ")
 			print(base * height)
 
 		if shape == "regular hexagon":
-			while True:
-				pass
-				side = input("Enter the length of the side (no units): ")
-				try:
-					float(side)
-				except:
-					pass
-				else:
-					side = float(side)
-					break
+			side = get_float("Enter the length of the side (no units): ")
 
 			mid1 = 3 * math.sqrt(3)
 			mid2 = mid1/2
@@ -291,86 +131,26 @@ while True:
 			print(mid2 * mid3)
 
 		if shape == "trapezoid":
-			while True:
-				pass
-				base1 = input("Enter the length of the first base (no units): ")
-				try:
-					float(base1)
-				except:
-					pass
-				else:
-					base1 = float(base1)
-					break
+			base1 = get_float("Enter the length of the first base (no units): ")
+			base2 = get_float("Enter the length of the second base (no units): ")
+			height = get_float("Enter the height (no units): ")
 
-			while True:
-				pass
-				base2 = input("Enter the length of the second base (no units): ")
-				try:
-					float(base2)
-				except:
-					pass
-				else:
-					base2 = float(base2)
-					break
-
-			while True:
-				height = input("Enter the height (no units): ")
-				try:
-					float(height)
-				except:
-					pass
-				else:
-					height = float(height)
-					break
 			bases = base1 + base2
 			div_bases = bases/2
 			print(div_bases * height)
 
 		if shape == "rhombus":
-			while True:
-					diagonal1 = input("Enter the length of the first diagonal (no unit): ")
-					try:
-						float(diagonal1)
-					except:
-						pass
-					else:
-						diagonal1 = float(diagonal1)
-						break
+			diagonal1 = get_float("Enter the length of the first diagonal (no unit): ")
+			diagonal2 = get_float("Enter the length of the second diagonal (no unit): ")
 
-			while True:
-					diagonal2 = input("Enter the length of the second diagonal (no unit): ")
-					try:
-						float(diagonal2)
-					except:
-						pass
-					else:
-						diagonal2 = float(diagonal2)
-						break
 			mid1 = diagonal2 * diagonal1
 			print(mid1/2)
 
 		print("")
 
 	if path == "basic":
-		while True:
-			first_value = input("Enter the first value: ")
-			try:
-				float(first_value)
-			except:
-				pass
-			else:
-				first_value = float(first_value)
-				break
-
-		while True:
-			second_value = input("Enter the second value: ")
-			try:
-				float(second_value)
-			except:
-				pass
-			else:
-				second_value = float(second_value)
-				break
+		first_value = get_float("Enter the first value: ")
+		second_value = get_float("Enter the second value: ")
 		
 		opperators = ["+", "-", "/", "*"]
 
@@ -393,18 +173,9 @@ while True:
 		print("")
 
 	if path == "sqrt":
-		value = input("Enter value: ")
-		while True:
-			try:
-				float(value)
-			except:
-				pass
-			else:
-				value = float(value)
-				break
+		value = get_float("Enter Value: ")
 		print(math.sqrt(float(value)))
 		print("")
 
 	if path == "exit":
 		break
-
