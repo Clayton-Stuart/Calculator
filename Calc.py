@@ -6,7 +6,11 @@ def print_help():
 		Midpoint Formula: type \"mid\"
 		Pythagorean Theorum Calculator: type \"pyth\"
 		Area of Shapes: type \"area\"
+		Volume of Shapes: type \"vol\"
 			""")
+	print("""Statistics Calculators:
+		Mean: type \"mean\"
+		""")
 	print("""Other Calculators:
 		Basic Calculator: type \"basic\"
 		Square Root Calculator: type \"sqrt\"
@@ -83,11 +87,12 @@ while True:
 		print("")
 
 	if path == "area":
-		message = "Enter circle, square, triangle, rectangle, regular hexagon, trapezoid, rhombus, or parallelogram: "
+		message = """\nEnter circle, square, triangle, rectangle, regular hexagon, trapezoid, rhombus, or parallelogram. 
+Type exit to quit: """
 
 		shape = input(message)
 		shape = shape.lower()
-		available_shapes = ["circle", "square", "triangle", "rectangle", "parallelogram", "regular hexagon", "trapezoid", "rhombus"]
+		available_shapes = ["circle", "square", "triangle", "rectangle", "parallelogram", "regular hexagon", "trapezoid", "rhombus", "exit"]
 		while True:
 			if shape in available_shapes:
 				break
@@ -103,7 +108,7 @@ while True:
 		if shape == "circle":
 			radius = get_float("Enter the radius (no units): ")
 			radius = radius * radius
-			print(radius * 3.14159265358979323846264338327950288419716939937510582097494459230781640628620899862803482534211706798214808651328230664709384)
+			print(radius * math.pi)
 
 		if shape == "triangle":
 			base = get_float("Enter the length of the base (no units)")
@@ -146,7 +151,8 @@ while True:
 			mid1 = diagonal2 * diagonal1
 			print(mid1/2)
 
-		print("")
+		if shape == "exit":
+			print("")
 
 	if path == "basic":
 		first_value = get_float("Enter the first value: ")
@@ -172,10 +178,124 @@ while True:
 			print(first_value * second_value)
 		print("")
 
+	if path == "vol":
+
+		message = "Enter cube, rectangular prism, sphere, cylinder, cone, square pyramid, triangular prism, hexagonal pyramid, hexagonal prism \n or type \"exit\" to exit: "
+		shape = input(message)
+		shape = shape.lower()
+		available_shapes = ["cube", "rectangular prism", "sphere", "cylinder", "cone", "square pyramid", "triangular prism", "hexagonal pyramid", "hexagonal prism", "exit"]
+
+		while True:
+			if shape in available_shapes:
+				break
+			else:
+				shape = input(message)
+				shape = shape.lower()
+
+		if shape == "cube":
+			side_length = get_float("Enter the length of a side (no unit): ")
+			print(side_length * side_length * side_length)
+			print("")
+
+		if shape == "rectangular prism":
+			width = get_float("Enter the width (no unit): ")
+			height = get_float("Enter the height (no unit): ")
+			length = get_float("Enter the length (no unit): ")
+			print(width * height * length)
+			print("")
+
+		if shape == "sphere":
+			radius = get_float("Enter the radius (no unit): ")
+			mid = 4 / 3
+			mid2 = mid * math.pi
+			rad_exp = radius * radius * radius
+			print(mid2 * rad_exp)
+			print("")
+
+		if shape == "cylinder":
+			radius = get_float("Enter the radius (no unit): ")
+			height = get_float("Enter the height (no unit): ")
+			rad_exp = radius * radius
+			mid1 = math.pi * rad_exp
+			print(mid1 * height)
+			print("")
+
+		if shape == "cone":
+			radius = get_float("Enter the radius (no unit): ")
+			height = get_float("Enter the height (no unit): ")
+			rad_exp = radius * radius
+			mid1 = rad_exp * math.pi
+			mid2 = height / 3
+			print(mid1 * mid2)
+			print("")
+
+		if shape == "square pyramid":
+			base_length = get_float("Enter the length of a base edge: ")
+			height = get_float("Enter the height (no unit): ")
+			base_length = base_length * base_length
+			height = height / 3
+			print(base_length * height)
+			print("")
+
+		if shape == "triangular prism":
+			while True:
+				try:
+					base1 = get_float("Enter the length of the first base (no units): ")
+					base2 = get_float("Enter the length of the second base (no units): ")
+					base3 = get_float("Enter the length of the third base (no units): ")
+					height = get_float("Enter the height (no unit): ")
+					print((0.25 * height) * math.sqrt((((base1 * base1 * base1 * base1) * -1) + 2 * ((base1 * base2) * (base1 * base2)) + 2 * ((base1 * base3) * (base1 * base3)) - (base2 * base2 * base2 * base2) + 2 * ((base2 * base3) * (base2 * base3)) - (base3 * base3 * base3 * base3))))
+					print("")
+				except:
+					print("")
+					print("Make sure the base1 + base2 is greater than base3 \n ")
+			
+
+		if shape == "hexagonal pyramid":
+			base = get_float("Enter the length of a base edge (no units): ")
+			height = get_float("Enter the height (no unit): ")
+			print( ((math.sqrt(3)) / 2) * (base * base) * height)
+			print("")
+
+		if shape == "hexagonal prism": 
+			base = get_float("Enter the length of a base edge (no units): ")
+			height = get_float("Enter the height (no unit): ")
+			print( (3 * (math.sqrt(3)) / 2) * (base * base) * height)
+			print("")
+
+		if shape == "exit":
+			print("")
+
+
 	if path == "sqrt":
 		value = get_float("Enter Value: ")
 		print(math.sqrt(float(value)))
 		print("")
+
+	if path == "mean":
+		mean_add = 0
+		items = []
+		while True:
+			adding = input("Enter a value, or type \"end\" to get the mean of items: ")
+			try:
+				adding = float(adding)
+			except:
+				adding = adding.lower()
+			else:
+				items.append(adding)
+				
+			print(items)
+			
+			if adding == "end":
+				mean_counter = 0
+				length = len(items)
+				for i in range (0, length):
+					mean_add += float(items[mean_counter])
+					mean_counter += 1
+
+				print(mean_add / length)
+				print("")
+				break
 
 	if path == "exit":
 		break
